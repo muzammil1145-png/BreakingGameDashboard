@@ -1,0 +1,1889 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Breaking Games — Holiday Game Plan</title>
+
+<link
+  href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+  rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+<style>
+
+:root {
+  --bg: #F7F7F5;
+  --card: #FFFFFF;
+  --text: #111111;
+  --muted: #6B6B6B;
+  --border: #E3E0E6;
+
+  --purple: #6F2DBD;
+  --purple-soft: #F3EEFA;
+
+  --teal: #16A6A1;
+  --teal-soft: #EAF8F7;
+
+  --yellow: #F4C542;
+  --yellow-soft: #FFF8DB;
+
+  --orange: #F28C28;
+  --orange-soft: #FFF1E4;
+
+  --pink: #F3A6C8;
+  --pink-soft: #FDECF4;
+
+  --danger: #C94A4A;
+  --danger-soft: #FBEAEA;
+
+  --gray: #D8D8D8;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.kpi-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  border-top: 4px solid var(--purple);
+}
+
+.kpi-card:nth-child(2) {
+  border-top-color: var(--teal);
+}
+
+.kpi-card:nth-child(3) {
+  border-top-color: var(--yellow);
+}
+
+.kpi-card:nth-child(4) {
+  border-top-color: var(--orange);
+}
+
+.kpi-card:nth-child(5) {
+  border-top-color: var(--pink);
+}
+
+.kpi-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--purple);
+}
+
+.kpi-card:nth-child(2) .kpi-value {
+  color: var(--teal);
+}
+
+.kpi-card:nth-child(3) .kpi-value {
+  color: #C59A00;
+}
+
+.kpi-card:nth-child(4) .kpi-value {
+  color: var(--orange);
+}
+
+.kpi-card:nth-child(5) .kpi-value {
+  color: #C95D8B;
+}
+
+.kpi-label {
+  font-size: .82rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-top: .25rem;
+}
+
+.chart-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.chart-box {
+  position: relative;
+  height: 350px;
+}
+
+.chart-box-tall {
+  position: relative;
+  height: 460px;
+}
+
+.section-header {
+  margin-top: 2.75rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: .75rem;
+  border-bottom: 3px solid var(--purple);
+}
+
+.section-header h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.section-header p {
+  color: var(--muted);
+  margin-top: .3rem;
+}
+
+.chart-description {
+  margin-top: 1rem;
+  padding: .9rem 1rem;
+  border-radius: 8px;
+  background: var(--purple-soft);
+  border-left: 3px solid var(--purple);
+  color: #514B57;
+  font-size: .88rem;
+  line-height: 1.55;
+}
+
+table.leaderboard {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.leaderboard th {
+  text-align: left;
+  padding: .75rem;
+  background: var(--purple-soft);
+  font-size: .79rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: #544760;
+}
+
+table.leaderboard td {
+  padding: .75rem;
+  border-top: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.findings {
+  background: var(--purple-soft);
+  border-left: 4px solid var(--purple);
+  padding: 1.5rem;
+  border-radius: 0 10px 10px 0;
+}
+
+.findings p {
+  margin-bottom: .9rem;
+}
+
+.findings p:last-child {
+  margin-bottom: 0;
+}
+
+.status-good {
+  background: var(--teal-soft);
+  color: #087B77;
+  font-weight: 700;
+}
+
+.status-watch {
+  background: var(--yellow-soft);
+  color: #927000;
+  font-weight: 700;
+}
+
+.status-action {
+  background: var(--orange-soft);
+  color: #B55F0B;
+  font-weight: 700;
+}
+
+.status-danger {
+  background: var(--danger-soft);
+  color: var(--danger);
+  font-weight: 700;
+}
+
+</style>
+
+</head>
+
+<body class="px-6 py-10 max-w-7xl mx-auto">
+
+
+<!-- HEADER -->
+
+<header class="mb-8">
+
+  <h1 class="text-4xl font-bold">
+    Breaking Games — Holiday Game Plan
+  </h1>
+
+  <p class="text-gray-600 mt-2">
+    Revenue, acquisition, advertising, and checkout performance analysis
+  </p>
+
+  <p class="text-gray-500 mt-1 text-sm">
+    Prepared by: <strong>Muzammil Paracha</strong>
+    &nbsp;|&nbsp;
+    Q4 Planning Analysis
+  </p>
+
+</header>
+
+
+<!-- KPI CARDS -->
+
+<section class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
+
+  <div class="kpi-card">
+    <div class="kpi-value">$61,085</div>
+    <div class="kpi-label">Total Revenue</div>
+  </div>
+
+  <div class="kpi-card">
+    <div class="kpi-value">$30.98</div>
+    <div class="kpi-label">Average Selling Price</div>
+  </div>
+
+  <div class="kpi-card">
+    <div class="kpi-value">333,550</div>
+    <div class="kpi-label">Total Pageviews</div>
+  </div>
+
+  <div class="kpi-card">
+    <div class="kpi-value">$37,201</div>
+    <div class="kpi-label">Meta Ad Spend</div>
+  </div>
+
+  <div class="kpi-card">
+    <div class="kpi-value">50.8%</div>
+    <div class="kpi-label">Adjusted Cart Abandonment</div>
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+REVENUE ANALYSIS
+============================================================ -->
+
+<div class="section-header">
+
+  <h2>Revenue Analysis</h2>
+
+  <p>
+    Product performance, average selling price, and concentration of company revenue.
+  </p>
+
+</div>
+
+
+<!-- PRODUCT REVENUE LEADERBOARD -->
+
+<section class="bg-white rounded-lg border border-gray-200 p-6 mb-6">
+
+  <h3 class="text-xl font-bold mb-1">Product Revenue Leaderboard</h3>
+
+  <p class="text-sm text-gray-500 mb-5">
+    Top products ranked by total revenue, with net items sold and average selling price
+  </p>
+
+  <div class="overflow-x-auto">
+    <table class="leaderboard">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Product</th>
+          <th>Net Items Sold</th>
+          <th>Revenue</th>
+          <th>ASP</th>
+          <th>ASP Signal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Dwellings of Eldervale 2nd Edition: Standard</td><td>129</td><td><strong>$13,323.56</strong></td><td>$103.28</td><td class="status-good">Above Avg</td></tr>
+        <tr><td>2</td><td>Dwellings of Eldervale - LEGENDARY Upgrade Kit</td><td>175</td><td><strong>$12,514.05</strong></td><td>$71.51</td><td class="status-good">Above Avg</td></tr>
+        <tr><td>3</td><td>Dwellings of Eldervale - DELUXE Upgrade Kit</td><td>89</td><td><strong>$5,014.81</strong></td><td>$56.35</td><td class="status-good">Above Avg</td></tr>
+        <tr><td>4</td><td>We're Doomed!</td><td>104</td><td><strong>$3,810.47</strong></td><td>$36.64</td><td class="status-good">Above Avg</td></tr>
+        <tr><td>5</td><td>Dwellings of Eldervale - Wooden Upgrade Treasure and Trove Tokens</td><td>127</td><td><strong>$2,586.22</strong></td><td>$20.36</td><td class="status-watch">Below Avg</td></tr>
+        <tr><td>6</td><td>The Big Box of Magic</td><td>46</td><td><strong>$1,920.14</strong></td><td>$41.74</td><td class="status-good">Above Avg</td></tr>
+        <tr><td>7</td><td>Dwellings of Eldervale - Exclusive Game Mat</td><td>28</td><td><strong>$1,874.13</strong></td><td>$66.93</td><td class="status-good">Above Avg</td></tr>
+        <tr><td>8</td><td>MIXTAPE</td><td>83</td><td><strong>$1,733.39</strong></td><td>$20.88</td><td class="status-watch">Below Avg</td></tr>
+        <tr><td>9</td><td>Dwellings of Eldervale - Minotaur Mercenary Mini Expansion</td><td>135</td><td><strong>$1,370.38</strong></td><td>$10.15</td><td class="status-watch">Below Avg</td></tr>
+        <tr><td>10</td><td>Dwellings of Eldervale - Shapeshifter Mercenary Mini Expansion</td><td>134</td><td><strong>$1,361.17</strong></td><td>$10.16</td><td class="status-watch">Below Avg</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="chart-description">
+    <strong>How to read:</strong>
+    Revenue ranks overall product contribution, net items sold shows demand volume,
+    and ASP shows revenue per item against the $30.98 catalog average.
+  </div>
+
+</section>
+
+
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+
+
+  <!-- REVENUE DISTRIBUTION -->
+
+  <div class="chart-card">
+
+    <h3 class="text-xl font-bold mb-1">
+      Revenue Distribution
+    </h3>
+
+    <p class="text-sm text-gray-500 mb-4">
+      Top five products compared with the rest of the catalog
+    </p>
+
+    <div class="chart-box">
+      <canvas id="revenueDistChart"></canvas>
+    </div>
+
+    <div class="chart-description">
+      <strong>How to read:</strong>
+      This chart shows how dependent company revenue is on its highest-performing
+      products. A large top-five share means stock availability for a small group
+      of products can have an outsized impact on Q4 revenue.
+    </div>
+
+  </div>
+
+
+  <!-- ASP -->
+
+  <div class="chart-card">
+
+    <h3 class="text-xl font-bold mb-1">
+      Highest-Value Products by Average Selling Price
+    </h3>
+
+    <p class="text-sm text-gray-500 mb-4">
+      Product ASP compared with the $30.98 catalog average
+    </p>
+
+    <div class="chart-box">
+      <canvas id="aspChart"></canvas>
+    </div>
+
+    <div class="chart-description">
+      <strong>How to read:</strong>
+      Bars show average selling price per unit, while the orange line represents
+      the $30.98 catalog average. Products above the benchmark generate more revenue
+      per unit sold, with Dwellings of Eldervale 2nd Edition leading at $103.28.
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PARETO -->
+
+<section class="chart-card mb-6">
+
+  <h3 class="text-xl font-bold mb-1">
+    Cumulative Revenue Concentration
+  </h3>
+
+  <p class="text-sm text-gray-500 mb-4">
+    Products ranked from highest to lowest revenue against the 80% benchmark
+  </p>
+
+  <div class="chart-box">
+    <canvas id="paretoChart"></canvas>
+  </div>
+
+  <div class="chart-description">
+    <strong>How to read:</strong>
+    The cumulative line reaches approximately 80% around product #13,
+    indicating that a relatively small set of products drives the majority
+    of company revenue.
+  </div>
+
+</section>
+
+
+<section class="findings mb-10">
+
+  <h3 class="text-xl font-bold mb-4">
+    Revenue Findings
+  </h3>
+
+  <p>
+    <strong>Revenue is concentrated in a relatively small portion of the catalog.</strong>
+    Approximately 13 products account for 80% of company revenue.
+  </p>
+
+  <p>
+    <strong>Dwellings of Eldervale is a major revenue franchise.</strong>
+    The core title and several related upgrades appear among the strongest
+    revenue-generating products.
+  </p>
+
+  <p>
+    <strong>Premium products command substantially higher average selling prices.</strong>
+    Dwellings of Eldervale 2nd Edition averages approximately $103.28 per unit sold,
+    compared with the $30.98 catalog average.
+  </p>
+
+</section>
+
+
+<!-- ============================================================
+TRAFFIC ANALYSIS
+============================================================ -->
+
+<div class="section-header">
+
+  <h2>Traffic Analysis</h2>
+
+  <p>
+    Acquisition volume and reported conversion efficiency across marketing channels.
+  </p>
+
+</div>
+
+
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+
+
+  <div class="chart-card">
+
+    <h3 class="text-xl font-bold mb-1">
+      Marketing Traffic Mix
+    </h3>
+
+    <p class="text-sm text-gray-500 mb-4">
+      Share of pageviews generated by acquisition channel
+    </p>
+
+    <div class="chart-box">
+      <canvas id="marketingMixChart"></canvas>
+    </div>
+
+    <div class="chart-description">
+      <strong>How to read:</strong>
+      Direct and Paid Social generate most website traffic, while Organic Search
+      contributes another substantial share. Traffic volume should be evaluated
+      alongside conversion efficiency before additional investment.
+    </div>
+
+  </div>
+
+
+  <div class="chart-card">
+
+    <h3 class="text-xl font-bold mb-1">
+      Conversion Rate by Channel
+    </h3>
+
+    <p class="text-sm text-gray-500 mb-4">
+      Reported conversion efficiency independently of traffic volume
+    </p>
+
+    <div class="chart-box">
+      <canvas id="channelConversionChart"></canvas>
+    </div>
+
+    <div class="chart-description">
+      <strong>How to read:</strong>
+      Email and Community/Referral report the strongest conversion efficiency
+      at smaller volumes, while Organic Search provides a stronger balance
+      of scale and conversion performance.
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="findings mb-10">
+
+  <h3 class="text-xl font-bold mb-4">
+    Traffic Findings
+  </h3>
+
+  <p>
+    <strong>Organic Search provides a strong combination of volume and conversion.</strong>
+    It generated 79,556 pageviews and 378 checkout sessions.
+  </p>
+
+  <p>
+    <strong>Email and Community/Referral show strong reported conversion efficiency at low volume.</strong>
+    These channels are candidates for controlled expansion testing.
+  </p>
+
+  <p>
+    <strong>Paid Social generates substantial traffic but weak downstream conversion.</strong>
+    Meta generated 91,336 pageviews while recording the lowest reported channel conversion rate.
+  </p>
+
+</section>
+
+
+<!-- ============================================================
+META ADVERTISING
+============================================================ -->
+
+<div class="section-header">
+
+  <h2>Meta Advertising Efficiency</h2>
+
+  <p>
+    Campaign engagement, cost efficiency, spend allocation, and Q4 budget priorities.
+  </p>
+
+</div>
+
+
+<section class="bg-white rounded-lg border border-gray-200 p-6 mb-6">
+
+  <h3 class="text-xl font-bold mb-1">
+    Meta Campaign Performance
+  </h3>
+
+  <p class="text-sm text-gray-500 mb-5">
+    Campaign metrics evaluated according to the action each campaign was designed to generate
+  </p>
+
+  <div class="overflow-x-auto">
+
+    <table class="leaderboard">
+
+      <thead>
+
+        <tr>
+          <th>Campaign</th>
+          <th>Objective / Result</th>
+          <th>Spend</th>
+          <th>Results</th>
+          <th>Cost / Result</th>
+          <th>CTR</th>
+          <th>CPC</th>
+          <th>Signal</th>
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        <tr>
+          <td>DA | Traffic TOF</td>
+          <td>Landing Page View</td>
+          <td>$8,634.89</td>
+          <td>39,419</td>
+          <td class="status-good">$0.22</td>
+          <td>1.404%</td>
+          <td>$0.21</td>
+          <td class="status-good">Maintain</td>
+        </tr>
+
+        <tr>
+          <td>DA | MAT Test | Dwellings | Traffic - LPV</td>
+          <td>Landing Page View</td>
+          <td>$4,344.57</td>
+          <td>17,753</td>
+          <td class="status-good">$0.24</td>
+          <td class="status-good">1.754%</td>
+          <td>$0.23</td>
+          <td class="status-good">Relaunch Test</td>
+        </tr>
+
+        <tr>
+          <td>DA | MAT Test | We're Doomed | Traffic - LPV</td>
+          <td>Landing Page View</td>
+          <td>$1,386.31</td>
+          <td>3,540</td>
+          <td>$0.39</td>
+          <td>0.778%</td>
+          <td>$0.36</td>
+          <td class="status-watch">Rework</td>
+        </tr>
+
+        <tr>
+          <td>DA | Sales | ATC</td>
+          <td>Add to Cart</td>
+          <td>$1,441.94</td>
+          <td>291</td>
+          <td>$4.96</td>
+          <td class="status-good">2.507%</td>
+          <td>$0.91</td>
+          <td class="status-good">Relaunch Test</td>
+        </tr>
+
+        <tr>
+          <td>DA | Sales | Advantage Plus</td>
+          <td>Purchase</td>
+          <td>$6,863.81</td>
+          <td>97</td>
+          <td>$70.76</td>
+          <td>0.996%</td>
+          <td>$1.52</td>
+          <td class="status-watch">Optimize</td>
+        </tr>
+
+        <tr>
+          <td>DA | Sales</td>
+          <td>Sales / No Recorded Result</td>
+          <td class="status-danger">$12,917.08</td>
+          <td class="status-danger">0 Recorded</td>
+          <td>—</td>
+          <td>0.84%</td>
+          <td>$1.50</td>
+          <td class="status-danger">Audit / Pause</td>
+        </tr>
+
+        <tr>
+          <td>DA | Reach | Retargeting</td>
+          <td>Reach</td>
+          <td>$1,612.34</td>
+          <td>1,208,484</td>
+          <td>$1.33</td>
+          <td class="status-action">0.098%</td>
+          <td>$1.09</td>
+          <td class="status-action">Reassess</td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</section>
+
+
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+
+
+  <div class="chart-card">
+
+    <h3 class="text-xl font-bold mb-1">
+      Campaign Engagement vs. Cost Efficiency
+    </h3>
+
+    <p class="text-sm text-gray-500 mb-4">
+      CTR compared with Cost per Result across campaigns with recorded outcomes
+    </p>
+
+    <div class="chart-box">
+      <canvas id="campaignEfficiencyChart"></canvas>
+    </div>
+
+    <div class="chart-description">
+      <strong>How to read:</strong>
+      Moving right means stronger engagement while moving downward means
+      lower cost per result. Campaign objectives represent different funnel stages
+      and should not be treated as economically identical outcomes.
+    </div>
+
+  </div>
+
+
+  <div class="chart-card">
+
+    <h3 class="text-xl font-bold mb-1">
+      Meta Ad Spend by Campaign
+    </h3>
+
+    <p class="text-sm text-gray-500 mb-4">
+      Where Meta advertising dollars are concentrated
+    </p>
+
+    <div class="chart-box">
+      <canvas id="campaignSpendChart"></canvas>
+    </div>
+
+    <div class="chart-description">
+      <strong>How to read:</strong>
+      DA | Sales represents the largest campaign spend at approximately $12.9K
+      despite having no recorded result, making attribution validation and
+      budget review a high-priority action.
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="findings mb-10">
+
+  <h3 class="text-xl font-bold mb-4">
+    Meta Advertising Findings
+  </h3>
+
+  <p>
+    <strong>Dwellings LPV and Traffic TOF provide the strongest balance of engagement
+    and cost efficiency among comparable traffic campaigns.</strong>
+  </p>
+
+  <p>
+    <strong>Sales ATC generated the highest CTR at 2.507%.</strong>
+    Its stronger deeper-funnel engagement warrants additional testing.
+  </p>
+
+  <p>
+    <strong>DA | Sales represents the largest campaign spend at approximately $12.9K
+    while showing zero recorded results.</strong>
+    Tracking and attribution should be validated before allocating additional budget.
+  </p>
+
+  <p>
+    <strong>Advantage+ produced 97 recorded purchases.</strong>
+    Its $70.76 purchase cost should be evaluated separately from traffic-focused campaigns.
+  </p>
+
+</section>
+
+
+<!-- ============================================================
+CHECKOUT ABANDONMENT ANALYSIS
+============================================================ -->
+
+<div class="section-header">
+
+  <h2>Checkout Abandonment Analysis</h2>
+
+  <p>
+    Identifying products and geographic segments associated with checkout loss
+    and potential shipping friction.
+  </p>
+
+</div>
+
+
+<section class="chart-card mb-6">
+
+  <h3 class="text-xl font-bold mb-1">
+    Observed Checkout Outcome by Product
+  </h3>
+
+  <p class="text-sm text-gray-500 mb-4">
+    Observed abandoned cart activity compared with matched completed orders
+  </p>
+
+  <div class="chart-box-tall">
+    <canvas id="productCheckoutChart"></canvas>
+  </div>
+
+  <div class="chart-description">
+    <strong>How to read:</strong>
+    Teal represents matched completed-order activity and orange represents
+    abandoned-cart activity. Products with large orange shares warrant investigation
+    into pricing, shipping, availability, and checkout friction.
+  </div>
+
+</section>
+
+
+<section class="chart-card mb-6">
+
+  <h3 class="text-xl font-bold mb-1">
+    Average Shipping by Billing Country
+  </h3>
+
+  <p class="text-sm text-gray-500 mb-4">
+    Shipping cost associated with abandoned checkout activity across major markets
+  </p>
+
+  <div class="chart-box">
+    <canvas id="countryShippingChart"></canvas>
+  </div>
+
+  <div class="chart-description">
+    <strong>How to read:</strong>
+    Several international markets show substantially higher shipping costs than
+    the United States, identifying markets where shipping friction deserves further review.
+  </div>
+
+</section>
+
+
+<section class="chart-card mb-6">
+
+  <h3 class="text-xl font-bold mb-1">
+    Checkout Volume by Billing Country
+  </h3>
+
+  <p class="text-sm text-gray-500 mb-4">
+    Checkout count and share of displayed checkout volume by major billing country
+  </p>
+
+  <div class="chart-box">
+    <canvas id="countryCheckoutChart"></canvas>
+  </div>
+
+  <div class="chart-description">
+    <strong>How to read:</strong>
+    The chart now shows both the checkout count and each country's percentage of the displayed checkout volume. The U.S. dominates the displayed geography mix, but volume alone should not be interpreted as a higher abandonment probability.
+  </div>
+
+</section>
+
+
+<section class="findings mb-10">
+
+  <h3 class="text-xl font-bold mb-4">
+    Checkout Findings
+  </h3>
+
+  <p>
+    <strong>Several high-interest products show substantial checkout-to-order gaps.</strong>
+    Secret Hitler, We're Doomed!, MIXTAPE, Sparkle*Kitty and several Dwellings
+    products warrant further checkout-friction analysis.
+  </p>
+
+  <p>
+    <strong>Legendary Upgrade has the strongest observed completion among products with matched orders.</strong>
+    Approximately 25% of combined observed activity is represented by completed orders,
+    followed by Oracle Hex Tile at 23.6% and We're Doomed! at 19%.
+  </p>
+
+  <p>
+    <strong>MIXTAPE shows a particularly large observed checkout-to-order gap.</strong>
+    Only 5.9% of its combined observed activity is represented by matched orders.
+  </p>
+
+  <p>
+    <strong>International abandoned checkouts are associated with materially higher shipping costs.</strong>
+    Average shipping is $8.39 for the U.S., compared with $23.66 for Canada,
+    $30.83 for the United Kingdom, and $35.20 for Germany.
+  </p>
+
+</section>
+
+
+<!-- ============================================================
+Q4 RECOMMENDATIONS
+============================================================ -->
+
+<div class="section-header">
+
+  <h2>Q4 Recommendations</h2>
+
+  <p>
+    Priority actions based on revenue, traffic, advertising, and checkout performance.
+  </p>
+
+</div>
+
+
+<section class="bg-white rounded-lg border border-gray-200 p-6 mb-10">
+
+<ol class="list-decimal pl-6 space-y-5">
+
+  <li>
+    <strong>Protect the products driving the majority of revenue.</strong>
+    Prioritize availability and replenishment for the approximately 13 products
+    responsible for 80% of revenue.
+  </li>
+
+  <li>
+    <strong>Prioritize Organic Search and run controlled Email and Community/Referral growth tests.</strong>
+    Organic provides the strongest combination of scale and reported conversion
+    efficiency, while Email and Referral show promising efficiency at smaller volumes.
+  </li>
+
+  <li>
+    <strong>Reallocate Meta attention toward campaigns with clearer efficiency signals.</strong>
+    Maintain Traffic TOF, test Dwellings LPV and Sales ATC, and audit the $12.9K
+    DA | Sales campaign before additional spending.
+  </li>
+
+  <li>
+    <strong>Investigate checkout friction for high-gap products and international customers.</strong>
+    Review product pricing, availability, shipping transparency, and international
+    shipping costs before Q4.
+  </li>
+
+  <li>
+    <strong>Improve attribution infrastructure.</strong>
+    Capture campaign and session identifiers through checkout so future reporting
+    can connect Meta spend directly to orders, revenue, CPA, and ROAS.
+  </li>
+
+</ol>
+
+</section>
+
+
+<footer class="text-center text-sm text-gray-500 pt-6 border-t border-gray-200">
+  Breaking Games E-Commerce Analytics &amp; Database Design Externship
+</footer>
+
+
+<!-- ============================================================
+CHART.JS
+============================================================ -->
+
+<script>
+
+const COLORS = {
+  purple: '#6F2DBD',
+  teal: '#16A6A1',
+  yellow: '#F4C542',
+  orange: '#F28C28',
+  pink: '#F3A6C8',
+  danger: '#C94A4A',
+  gray: '#D8D8D8',
+  darkPurple: '#513078',
+  softPurple: 'rgba(111,45,189,0.12)'
+};
+
+
+/* REVENUE DISTRIBUTION */
+
+new Chart(document.getElementById('revenueDistChart'), {
+
+  type:'doughnut',
+
+  data:{
+    labels:[
+      'Top 5 Products',
+      'Rest of Catalog'
+    ],
+
+    datasets:[{
+      data:[
+        37249,
+        23836
+      ],
+
+      backgroundColor:[
+        COLORS.purple,
+        COLORS.gray
+      ],
+
+      borderColor:'#FFFFFF',
+      borderWidth:2
+    }]
+  },
+
+  options:{
+    responsive:true,
+    maintainAspectRatio:false,
+    cutout:'58%',
+
+    plugins:{
+      legend:{
+        position:'bottom'
+      },
+
+      tooltip:{
+        callbacks:{
+          label:function(context){
+
+            const value = context.raw;
+            const total =
+              context.dataset.data.reduce(
+                (a,b) => a+b,
+                0
+              );
+
+            const pct =
+              ((value / total) * 100).toFixed(1);
+
+            return context.label +
+              ': $' +
+              value.toLocaleString() +
+              ' (' +
+              pct +
+              '%)';
+          }
+        }
+      }
+    }
+  }
+
+});
+
+
+/* ============================================================
+AVERAGE SELLING PRICE WITH AVERAGE BENCHMARK
+============================================================ */
+
+new Chart(document.getElementById('aspChart'), {
+
+  data: {
+
+    labels: [
+      'Dwellings 2nd Edition',
+      'Legendary Upgrade',
+      'Exclusive Game Mat',
+      'Deluxe Upgrade',
+      'Big Box of Magic',
+      "We're Doomed!"
+    ],
+
+    datasets: [
+
+      {
+        type: 'bar',
+
+        label: 'Product ASP',
+
+        data: [
+          103.28,
+          71.51,
+          66.93,
+          56.35,
+          41.74,
+          36.64
+        ],
+
+        backgroundColor: COLORS.teal,
+
+        borderRadius: 6
+      },
+
+      {
+        type: 'line',
+
+        label: 'Catalog Average ASP ($30.98)',
+
+        data: [
+          30.98,
+          30.98,
+          30.98,
+          30.98,
+          30.98,
+          30.98
+        ],
+
+        borderColor: COLORS.orange,
+
+        borderWidth: 3,
+
+        borderDash: [6, 4],
+
+        pointRadius: 0,
+
+        pointHoverRadius: 0,
+
+        fill: false
+      }
+
+    ]
+
+  },
+
+  options: {
+
+    responsive: true,
+
+    maintainAspectRatio: false,
+
+    plugins: {
+
+      legend: {
+        position: 'bottom'
+      },
+
+      tooltip: {
+
+        callbacks: {
+
+          label: function(context) {
+
+            return context.dataset.label +
+              ': $' +
+              context.raw.toFixed(2);
+
+          }
+
+        }
+
+      }
+
+    },
+
+    scales: {
+
+      y: {
+
+        beginAtZero: true,
+
+        title: {
+          display: true,
+          text: 'Average Selling Price ($)'
+        },
+
+        ticks: {
+          callback: value => '$' + value
+        }
+
+      }
+
+    }
+
+  }
+
+});
+
+
+/* PARETO */
+
+new Chart(document.getElementById('paretoChart'), {
+
+  type:'line',
+
+  data:{
+
+    labels:[
+      '1','2','3','4','5',
+      '6','7','8','9','10',
+      '11','12','13','14','15'
+    ],
+
+    datasets:[
+
+      {
+        label:'Cumulative Revenue %',
+
+        data:[
+          21.81,
+          42.30,
+          50.51,
+          56.75,
+          60.98,
+          64.12,
+          67.19,
+          70.03,
+          72.27,
+          74.50,
+          76.58,
+          78.66,
+          80.19,
+          81.55,
+          82.79
+        ],
+
+        borderColor:COLORS.purple,
+        backgroundColor:COLORS.softPurple,
+        borderWidth:3,
+        tension:.25,
+        fill:true
+      },
+
+      {
+        label:'80% Revenue Benchmark',
+
+        data:[
+          80,80,80,80,80,
+          80,80,80,80,80,
+          80,80,80,80,80
+        ],
+
+        borderColor:COLORS.orange,
+        borderDash:[6,4],
+        borderWidth:2,
+        pointRadius:0
+      }
+
+    ]
+
+  },
+
+  options:{
+
+    responsive:true,
+    maintainAspectRatio:false,
+
+    scales:{
+
+      x:{
+        title:{
+          display:true,
+          text:'Products Ranked by Revenue'
+        }
+      },
+
+      y:{
+        beginAtZero:true,
+        max:100,
+
+        title:{
+          display:true,
+          text:'Cumulative Revenue (%)'
+        },
+
+        ticks:{
+          callback:value => value + '%'
+        }
+      }
+
+    }
+
+  }
+
+});
+
+
+/* MARKETING MIX */
+
+new Chart(document.getElementById('marketingMixChart'), {
+
+  type:'doughnut',
+
+  data:{
+
+    labels:[
+      'Direct',
+      'Paid Social',
+      'Organic Search',
+      'Community/Referral',
+      'Other',
+      'Email'
+    ],
+
+    datasets:[{
+
+      data:[
+        153759,
+        91336,
+        79556,
+        3321,
+        3227,
+        2351
+      ],
+
+      backgroundColor:[
+        COLORS.purple,
+        COLORS.orange,
+        COLORS.teal,
+        COLORS.yellow,
+        COLORS.pink,
+        COLORS.darkPurple
+      ],
+
+      borderColor:'#FFFFFF',
+      borderWidth:2
+
+    }]
+
+  },
+
+  options:{
+
+    responsive:true,
+    maintainAspectRatio:false,
+    cutout:'58%',
+
+    plugins:{
+      legend:{
+        position:'bottom'
+      },
+
+      tooltip:{
+        callbacks:{
+          label:function(context){
+
+            const value = context.raw;
+
+            const total =
+              context.dataset.data.reduce(
+                (a,b) => a+b,
+                0
+              );
+
+            const pct =
+              ((value / total) * 100).toFixed(1);
+
+            return context.label +
+              ': ' +
+              value.toLocaleString() +
+              ' pageviews (' +
+              pct +
+              '%)';
+          }
+        }
+      }
+    }
+
+  }
+
+});
+
+
+/* CHANNEL CONVERSION */
+
+new Chart(document.getElementById('channelConversionChart'), {
+
+  type:'bar',
+
+  data:{
+
+    labels:[
+      'Email',
+      'Community/Referral',
+      'Organic Search',
+      'Direct',
+      'Other',
+      'Paid Social'
+    ],
+
+    datasets:[{
+
+      label:'Reported Conversion Rate',
+
+      data:[
+        1.60,
+        1.13,
+        .97,
+        .72,
+        .60,
+        .15
+      ],
+
+      backgroundColor:[
+        COLORS.teal,
+        COLORS.teal,
+        COLORS.teal,
+        COLORS.yellow,
+        COLORS.yellow,
+        COLORS.orange
+      ],
+
+      borderRadius:6
+
+    }]
+
+  },
+
+  options:{
+
+    indexAxis:'y',
+    responsive:true,
+    maintainAspectRatio:false,
+
+    plugins:{
+      legend:{
+        display:false
+      }
+    },
+
+    scales:{
+
+      x:{
+        beginAtZero:true,
+
+        title:{
+          display:true,
+          text:'Reported Conversion Rate (%)'
+        },
+
+        ticks:{
+          callback:value => value + '%'
+        }
+      }
+
+    }
+
+  }
+
+});
+
+
+/* CAMPAIGN ENGAGEMENT VS COST */
+
+new Chart(document.getElementById('campaignEfficiencyChart'), {
+
+  type:'scatter',
+
+  data:{
+
+    datasets:[
+
+      {
+        label:'Traffic TOF — LPV',
+        data:[{x:1.404,y:.22}],
+        backgroundColor:COLORS.purple,
+        pointRadius:9
+      },
+
+      {
+        label:'Dwellings — LPV',
+        data:[{x:1.754,y:.24}],
+        backgroundColor:COLORS.teal,
+        pointRadius:9
+      },
+
+      {
+        label:"We're Doomed — LPV",
+        data:[{x:.778,y:.39}],
+        backgroundColor:COLORS.yellow,
+        pointRadius:9
+      },
+
+      {
+        label:'Sales — ATC',
+        data:[{x:2.507,y:4.96}],
+        backgroundColor:COLORS.orange,
+        pointRadius:10
+      },
+
+      {
+        label:'Advantage+ — Purchase',
+        data:[{x:.996,y:70.76}],
+        backgroundColor:COLORS.pink,
+        pointRadius:11
+      },
+
+      {
+        label:'Reach — Retargeting',
+        data:[{x:.098,y:1.33}],
+        backgroundColor:COLORS.darkPurple,
+        pointRadius:9
+      }
+
+    ]
+
+  },
+
+  options:{
+
+    responsive:true,
+    maintainAspectRatio:false,
+
+    plugins:{
+      legend:{
+        position:'bottom'
+      }
+    },
+
+    scales:{
+
+      x:{
+        beginAtZero:true,
+
+        title:{
+          display:true,
+          text:'CTR (%) — Higher = More Engaging'
+        },
+
+        ticks:{
+          callback:value => value + '%'
+        }
+      },
+
+      y:{
+        beginAtZero:true,
+
+        title:{
+          display:true,
+          text:'Cost per Result ($) — Lower = More Efficient'
+        },
+
+        ticks:{
+          callback:value => '$' + value
+        }
+      }
+
+    }
+
+  }
+
+});
+
+
+/* META SPEND */
+
+new Chart(document.getElementById('campaignSpendChart'), {
+
+  type:'bar',
+
+  data:{
+
+    labels:[
+      'DA | Sales',
+      'Traffic TOF',
+      'Advantage+',
+      'Dwellings LPV',
+      'Reach Retargeting',
+      'Sales ATC',
+      "We're Doomed LPV"
+    ],
+
+    datasets:[{
+
+      label:'Campaign Spend',
+
+      data:[
+        12917.08,
+        8634.89,
+        6863.81,
+        4344.57,
+        1612.34,
+        1441.94,
+        1386.31
+      ],
+
+      backgroundColor:[
+        COLORS.danger,
+        COLORS.purple,
+        COLORS.pink,
+        COLORS.teal,
+        COLORS.darkPurple,
+        COLORS.yellow,
+        COLORS.orange
+      ],
+
+      borderRadius:6
+
+    }]
+
+  },
+
+  options:{
+
+    indexAxis:'y',
+    responsive:true,
+    maintainAspectRatio:false,
+
+    plugins:{
+      legend:{
+        display:false
+      }
+    },
+
+    scales:{
+
+      x:{
+        beginAtZero:true,
+
+        title:{
+          display:true,
+          text:'Campaign Spend ($)'
+        },
+
+        ticks:{
+          callback:value =>
+            '$' + value.toLocaleString()
+        }
+      }
+
+    }
+
+  }
+
+});
+
+
+/* PRODUCT CHECKOUT OUTCOME */
+
+new Chart(document.getElementById('productCheckoutChart'), {
+
+  type:'bar',
+
+  data:{
+
+    labels:[
+      'Secret Hitler',
+      "We're Doomed!",
+      'Sparkle*Kitty',
+      'Dwellings - Minotaur',
+      'Sparkle*Kitty Princess Palette',
+      'Dwellings - Legendary Upgrade',
+      'Dwellings - Oracle Hex Tile',
+      'Dwellings - All Editions Legendary',
+      'Inhuman Conditions',
+      'MIXTAPE'
+    ],
+
+    datasets:[
+
+      {
+        label:'Observed Abandoned %',
+
+        data:[
+          100,
+          81.0,
+          100,
+          100,
+          100,
+          75.0,
+          76.4,
+          100,
+          100,
+          94.1
+        ],
+
+        backgroundColor:COLORS.orange,
+        stack:'checkout'
+      },
+
+      {
+        label:'Observed Ordered %',
+
+        data:[
+          0,
+          19.0,
+          0,
+          0,
+          0,
+          25.0,
+          23.6,
+          0,
+          0,
+          5.9
+        ],
+
+        backgroundColor:COLORS.teal,
+        stack:'checkout'
+      }
+
+    ]
+
+  },
+
+  options:{
+
+    indexAxis:'y',
+    responsive:true,
+    maintainAspectRatio:false,
+
+    scales:{
+
+      x:{
+        stacked:true,
+        min:0,
+        max:100,
+
+        title:{
+          display:true,
+          text:'Share of Observed Activity (%)'
+        },
+
+        ticks:{
+          callback:value => value + '%'
+        }
+      },
+
+      y:{
+        stacked:true
+      }
+
+    }
+
+  }
+
+});
+
+
+/* COUNTRY DATA */
+
+const billingCountries = [
+  'United States',
+  'Canada',
+  'Germany',
+  'United Kingdom',
+  'Australia',
+  'France',
+  'Netherlands',
+  'Sweden',
+  'New Zealand',
+  'Norway'
+];
+
+const countryCheckoutCounts = [
+  530,
+  48,
+  28,
+  26,
+  21,
+  18,
+  14,
+  12,
+  10,
+  9
+];
+
+const countryAverageShipping = [
+  8.39,
+  23.66,
+  35.20,
+  30.83,
+  31.44,
+  30.12,
+  27.41,
+  31.68,
+  34.72,
+  32.15
+];
+
+
+/* SHIPPING BY COUNTRY */
+
+new Chart(document.getElementById('countryShippingChart'), {
+
+  type:'bar',
+
+  data:{
+
+    labels:billingCountries,
+
+    datasets:[{
+
+      label:'Average Shipping',
+
+      data:countryAverageShipping,
+
+      backgroundColor:[
+        COLORS.teal,
+        COLORS.yellow,
+        COLORS.orange,
+        COLORS.orange,
+        COLORS.pink,
+        COLORS.purple,
+        COLORS.darkPurple,
+        COLORS.pink,
+        COLORS.orange,
+        COLORS.yellow
+      ],
+
+      borderRadius:6
+
+    }]
+
+  },
+
+  options:{
+
+    indexAxis:'y',
+    responsive:true,
+    maintainAspectRatio:false,
+
+    plugins:{
+      legend:{
+        display:false
+      }
+    },
+
+    scales:{
+
+      x:{
+        beginAtZero:true,
+
+        title:{
+          display:true,
+          text:'Average Shipping Cost ($)'
+        },
+
+        ticks:{
+          callback:value => '$' + value
+        }
+      }
+
+    }
+
+  }
+
+});
+
+
+/* CHECKOUT VOLUME BY COUNTRY */
+
+const displayedCheckoutTotal = countryCheckoutCounts.reduce((sum, value) => sum + value, 0);
+
+const checkoutPercentageLabels = {
+  id: 'checkoutPercentageLabels',
+  afterDatasetsDraw(chart) {
+    const {ctx} = chart;
+    const dataset = chart.data.datasets[0];
+    const meta = chart.getDatasetMeta(0);
+
+    ctx.save();
+    ctx.font = '600 11px -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif';
+    ctx.fillStyle = '#514B57';
+    ctx.textBaseline = 'middle';
+
+    meta.data.forEach((bar, index) => {
+      const count = dataset.data[index];
+      const pct = (count / displayedCheckoutTotal * 100).toFixed(1);
+      ctx.fillText(`${count.toLocaleString()} (${pct}%)`, bar.x + 8, bar.y);
+    });
+
+    ctx.restore();
+  }
+};
+
+new Chart(document.getElementById('countryCheckoutChart'), {
+
+  type:'bar',
+
+  plugins:[checkoutPercentageLabels],
+
+  data:{
+
+    labels:billingCountries,
+
+    datasets:[{
+
+      label:'Checkout Volume',
+
+      data:countryCheckoutCounts,
+
+      backgroundColor:COLORS.purple,
+
+      borderRadius:6
+
+    }]
+
+  },
+
+  options:{
+
+    indexAxis:'y',
+    responsive:true,
+    maintainAspectRatio:false,
+
+    layout:{
+      padding:{
+        right:85
+      }
+    },
+
+    plugins:{
+      legend:{
+        display:false
+      },
+      tooltip:{
+        callbacks:{
+          label:function(context){
+            const count = context.raw;
+            const pct = (count / displayedCheckoutTotal * 100).toFixed(1);
+            return `Checkout Volume: ${count.toLocaleString()} (${pct}% of displayed volume)`;
+          }
+        }
+      }
+    },
+
+    scales:{
+
+      x:{
+        beginAtZero:true,
+
+        title:{
+          display:true,
+          text:'Checkout Count'
+        }
+      }
+
+    }
+
+  }
+
+});
+
+</script>
+
+</body>
